@@ -21,14 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Both fields are required.";
     } else {
         // Use prepared statements to prevent SQL injection
-        $stmt = $conn->prepare("SELECT user_type FROM users WHERE email = ? AND password = ?");
+        $stmt = $conn->prepare("SELECT type FROM users WHERE email = ? AND password = ?");
         $stmt->bind_param("ss", $email, $password);
         $stmt->execute();
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
             // User found, fetch user type
-            $stmt->bind_result($user_type);
+            $stmt->bind_result($type);
             $stmt->fetch();
 
             // Start session and store email
