@@ -1,15 +1,25 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	font-family: Arial, sans-serif;
 	background-color: #f4f4f4;
 	margin: 0;
-	padding: 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	height: 100vh;
+	width: 100vw;
 }
 
-h1 {
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+main h1 {
 	text-align: center;
 	color: #8b0000;
 	margin-bottom: 30px;
@@ -150,26 +160,44 @@ tr:nth-child(even) {
 	background-color: #f9f9f9;
 }
 
+nav {
+	color: white;
+	padding: 20px;
+	text-align: center;
+}
+
+nav a {
+	font-size: 20px;
+	color: grey;
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+.active {
+	color: #8b0000;
+	font-weight: bold;
+}
+
 .message {
-	margin-bottom: 20px;
-	padding: 10px;
-	border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
 }
 
 .message p {
-	margin: 0;
+    margin: 0;
 }
 
 .message p {
-	color: #721c24;
-	background-color: #edd4d4;
-	border: 1px solid #c3e6cb;
-	padding: 10px;
-	border-radius: 4px;
+    color: #721c24;
+    background-color: #edd4d4;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 4px;
 }
 
 .message p.error {
-	color: #721c24;
-	background-color: #f8d7da;
-	border: 1px solid #f5c6cb;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
 }
