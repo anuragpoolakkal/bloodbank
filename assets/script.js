@@ -1,4 +1,4 @@
 function logout() {
-    localStorage.clear();
-    window.location.href = '/login.php';
+	localStorage.clear();
+	window.location.href = "login.php";
 }

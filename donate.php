@@ -72,7 +72,7 @@ $conn->close();
         <?php endif; ?>
     </div>
 
-    <form method="POST" action="home.php">
+    <form method="POST" action="donate.php">
         <script>
             document.write('<input type="hidden" name="user_id" value="' + localStorage.getItem('user_id') + '">');
         </script>

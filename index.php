@@ -18,7 +18,7 @@ $userType = $isLoggedIn ? $_SESSION['user_type'] : null;
 
 if ($isLoggedIn) {
     if ($userType === 'user') {
-        header('Location: home.php');
+        header('Location: donate.php');
         exit();
     } elseif ($userType === 'admin') {
         header('Location: admin.php');

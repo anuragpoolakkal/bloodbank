@@ -64,21 +64,32 @@ $conn->close();
             <?php endif; ?>
         </div>
         <form action="register.php" method="post">
-            <h2>Register</h2>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" maxlength="40" required><br><br>
+        <h2>Register</h2>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" maxlength="40" required placeholder="Enter your name"><br><br>
 
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" maxlength="10" required><br><br>
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" maxlength="10" required placeholder="Enter your phone number"><br><br>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" maxlength="40" required><br><br>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" maxlength="40" required placeholder="Enter your email address"><br><br>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" maxlength="40" required><br><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" maxlength="40" required placeholder="Create a password"><br><br>
 
-            <label for="blood_group">Blood Group:</label>
-            <input type="text" id="blood_group" name="blood_group" maxlength="3" required><br><br>
+        <label for="blood_group">Blood Group</label>
+        <select id="blood_group" name="blood_group" required>
+            <option value="" disabled selected>Select blood group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select><br><br>
+
 
             <input type="submit" value="Register">
 

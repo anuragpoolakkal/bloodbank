@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     localStorage.setItem('user_id', '$user_id');
                     localStorage.setItem('email', '$email');
                     localStorage.setItem('user_type', '$user_type');
-                    window.location.href = '" . ($user_type === 'admin' ? "admin/donations.php" : "home.php") . "';
+                    window.location.href = '" . ($user_type === 'admin' ? "admin/donations.php" : "donate.php") . "';
                   </script>";
             exit();
         } else {
@@ -70,11 +70,12 @@ $conn->close();
 
         <form action="login.php" method="post">
             <h2>Log in</h2>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" maxlength="40" required><br><br>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" maxlength="40" required placeholder="Enter your email address"><br><br>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" maxlength="40" required><br><br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" maxlength="40" required placeholder="Create a password"><br><br>
 
             <input type="submit" value="Login">
             <p>Don't have an account? <a href="register.php">Register here</a>.</p>
