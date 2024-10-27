@@ -1,5 +1,7 @@
 <?php
 session_start();
+$message = "";
+
 if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != "user") {
     header('Location: login.php');
     exit();
@@ -29,14 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("issi", $userId, $bloodGroup, $donationDate, $quantityMl);
 
         if ($stmt->execute()) {
-            echo "Donation recorded successfully!";
+            $message = "Donation recorded successfully!";
         } else {
-            echo "Error: " . $stmt->error;
+            $message = "Error: " . $stmt->error;
         }
 
         $stmt->close();
     } else {
-        echo "All fields are required.";
+        $message = "All fields are required.";
     }
 }
 
@@ -62,19 +64,27 @@ $conn->close();
 <body>
   <div class="container">
     <div class="logout-container">
-        <button class="logout-button">
+        <button class="logout-button" onclick="logout()">
             <i class="fas fa-sign-out-alt logout-icon"></i>
         </button>
     </div>
     <h1>Blood Bank</h1>
+    
+    <!-- Display message here -->
+    <div class="message">
+        <?php if ($message): ?>
+            <p><?php echo $message; ?></p>
+        <?php endif; ?>
+    </div>
+
     <form method="POST" action="home.php">
-        <!-- user_id is stored in the localStorage (js), set it in a hidden input field -->
         <script>
             document.write('<input type="hidden" name="user_id" value="' + localStorage.getItem('user_id') + '">');
         </script>
         <h2>Donation Details</h2>   
         <label for="blood_group">Blood Group:</label>
         <select id="blood_group" name="blood_group" required>
+            <option value="" disabled selected>Select blood group</option>
             <option value="A+">A+</option>
             <option value="A-">A-</option>
             <option value="B+">B+</option>
@@ -87,6 +97,11 @@ $conn->close();
 
         <label for="donation_date">Donation Date:</label>
         <input type="date" id="donation_date" name="donation_date" required>
+
+        <script>
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('donation_date').value = today;
+        </script>
 
         <label for="quantity_ml">Quantity (in ml):</label>
         <input type="number" id="quantity_ml" name="quantity_ml" required>

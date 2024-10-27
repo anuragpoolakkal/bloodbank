@@ -1,4 +1,7 @@
 <?php
+session_start();
+$message = "";
+
 $host = 'database-1.clmcs66qmddh.ap-south-1.rds.amazonaws.com';
 $port = 3306;
 $db = 'bloodbank';
@@ -19,15 +22,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $blood_group = $_POST['blood_group'];
 
     if (empty($name) || empty($phone) || empty($email) || empty($password) || empty($blood_group)) {
-        echo "All fields are required.";
+        $message = "All fields are required.";
     } else {
-        $sql = "INSERT INTO users (name, phone, email, password, blood_group) 
-                VALUES ('$name', '$phone', '$email', '$password', '$blood_group')";
+        $checkEmailSql = "SELECT * FROM users WHERE email = '$email'";
+        $result = $conn->query($checkEmailSql);
 
-        if ($conn->query($sql) === TRUE) {
-            echo "Registration successful!";
+        if ($result->num_rows > 0) {
+            $message = "Email already exists. Please use a different email.";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            // Proceed to insert the new user
+            $sql = "INSERT INTO users (name, phone, email, password, blood_group) 
+                    VALUES ('$name', '$phone', '$email', '$password', '$blood_group')";
+
+            if ($conn->query($sql) === TRUE) {
+                $message = "Registration successful!";
+            } else {
+                $message = "Error: " . $sql . "<br>" . $conn->error;
+            }
         }
     }
 }
@@ -47,6 +58,11 @@ $conn->close();
 <body>
     <div class="container">
         <h1>Blood Bank</h1>
+        <div class="message">
+            <?php if ($message): ?>
+                <p><?php echo $message; ?></p>
+            <?php endif; ?>
+        </div>
         <form action="register.php" method="post">
             <h2>Register</h2>
             <label for="name">Name:</label>
