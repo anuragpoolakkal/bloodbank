@@ -20,13 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($email) || empty($password)) {
         echo "Both fields are required.";
     } else {
-        $stmt = $conn->prepare("SELECT type FROM users WHERE email = ? AND password = ?");
+        $stmt = $conn->prepare("SELECT id, type FROM users WHERE email = ? AND password = ?");
         $stmt->bind_param("ss", $email, $password);
         $stmt->execute();
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            $stmt->bind_result($user_type);
+            $stmt->bind_result($user_id, $user_type);
             $stmt->fetch();
             $_SESSION['email'] = $email;
             $_SESSION['user_type'] = $user_type;

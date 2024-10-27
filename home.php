@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['user_id'], $_POST['blood_group'], $_POST['donation_date'], $_POST['quantity_ml'])) {
-        $userId = $_SESSION['user_id'];
+        $userId = $_POST['user_id'];
         $bloodGroup = $_POST['blood_group'];
         $donationDate = $_POST['donation_date'];
         $quantityMl = $_POST['quantity_ml'];
@@ -68,7 +68,11 @@ $conn->close();
     </div>
     <h1>Blood Bank</h1>
     <form method="POST" action="home.php">
-        <h2>Donation Details</h2>
+        <!-- user_id is stored in the localStorage (js), set it in a hidden input field -->
+        <script>
+            document.write('<input type="hidden" name="user_id" value="' + localStorage.getItem('user_id') + '">');
+        </script>
+        <h2>Donation Details</h2>   
         <label for="blood_group">Blood Group:</label>
         <select id="blood_group" name="blood_group" required>
             <option value="A+">A+</option>
