@@ -68,9 +68,9 @@ $result = $conn->query($query);
         <thead>
             <tr>
                 <th>Donation ID</th>
-                <th>User</th>
-                <th>Blood Group</th>
                 <th>Donation Date</th>
+                <th>Donor</th>
+                <th>Blood Group</th>
                 <th>Quantity (ml)</th>
             </tr>
         </thead>
@@ -80,9 +80,9 @@ $result = $conn->query($query);
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
                             <td>" . htmlspecialchars($row['donation_id']) . "</td>
+                            <td>" . htmlspecialchars($row['donation_date']) . "</td>
                             <td><b>" . htmlspecialchars($row['user_name']) . "</b><br/>" . htmlspecialchars($row['user_email']) . "<br/>" . htmlspecialchars($row['user_phone']) . "</td>
                             <td>" . htmlspecialchars($row['blood_group']) . "</td>
-                            <td>" . htmlspecialchars($row['donation_date']) . "</td>
                             <td>" . htmlspecialchars($row['quantity_ml']) . "</td>
                           </tr>";
                 }
