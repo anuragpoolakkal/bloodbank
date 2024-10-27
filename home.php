@@ -52,17 +52,12 @@ $conn->close();
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="assets/styles.css">
     <title>Blood Bank - Home</title>
-    <script>
-        function logout() {
-            localStorage.clear();
-            window.location.href = 'login.php';
-        }
-    </script>
+    <script src="assets/script.js"></script>
 </head>
 <body>
   <div class="container">
     <div class="logout-container">
-        <button class="logout-button">
+        <button class="logout-button" onclick="logout()">
             <i class="fas fa-sign-out-alt logout-icon"></i>
         </button>
     </div>

@@ -1,15 +1,23 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
+	width: 100vw;
 }
 
-
+.container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 
 h1 {
 	text-align: center;
@@ -150,4 +158,22 @@ tr:hover {
 
 tr:nth-child(even) {
 	background-color: #f9f9f9;
+}
+
+nav{
+	color: white;
+	padding: 20px;
+	text-align: center;
+}
+
+nav a{
+	font-size: 20px;
+	color: grey;
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+.active{
+	color: #8b0000;
+	font-weight: bold;
 }

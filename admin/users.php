@@ -38,14 +38,9 @@ $result = $conn->query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <link rel="stylesheet" type="text/css" href="../assets/styles.css">
     <title>Admin - User Management</title>
-    <script>
-        function logout() {
-            localStorage.clear();
-            window.location.href = 'login.php';
-        }
-    </script>
+    <script src="../assets/script.js"></script>
 </head>
 <body>
   <div class="container">
@@ -54,9 +49,12 @@ $result = $conn->query($query);
             <i class="fas fa-sign-out-alt logout-icon"></i>
         </button>
     </div>
-    <h1>User Management</h1>
+    <nav>
+        <a href="donations.php">Donations</a>
+        <a href="users.php" class="active">Users</a>
+    </nav>
     
-    <form method="POST" action="admin.php">
+    <form method="POST" action="">
         <input type="text" name="search" placeholder="Search users..." value="<?php echo htmlspecialchars($searchTerm); ?>">
         <button type="submit">Search</button>
     </form>
