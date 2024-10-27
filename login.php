@@ -20,26 +20,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($email) || empty($password)) {
         echo "Both fields are required.";
     } else {
-        // Use prepared statements to prevent SQL injection
         $stmt = $conn->prepare("SELECT type FROM users WHERE email = ? AND password = ?");
         $stmt->bind_param("ss", $email, $password);
         $stmt->execute();
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            // User found, fetch user type
-            $stmt->bind_result($type);
+            $stmt->bind_result($user_type);
             $stmt->fetch();
-
-            // Start session and store email
             $_SESSION['email'] = $email;
-
-            // Redirect based on user type
-            if ($user_type === 'admin') {
-                header("Location: admin.php");
-            } else {
-                header("Location: home.php");
-            }
+            $_SESSION['user_type'] = $user_type;
+            echo "<script>
+                    localStorage.setItem('user_id', '$user_id');
+                    localStorage.setItem('email', '$email');
+                    localStorage.setItem('user_type', '$user_type');
+                    window.location.href = '" . ($user_type === 'admin' ? "admin.php" : "home.php") . "';
+                  </script>";
             exit();
         } else {
             echo "Invalid email or password.";
@@ -57,19 +53,24 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
     <title>User Login</title>
 </head>
 <body>
-    <h2>Blood Bank User Login</h2>
-    <form action="login.php" method="post">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" maxlength="40"><br><br>
+    <div class="container">
+        <h1>Blood Bank</h1>
+        <form action="login.php" method="post">
+            <h2>Log in</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" maxlength="40" required><br><br>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" maxlength="40"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" maxlength="40" required><br><br>
 
-        <input type="submit" value="Login">
-    </form>
+            <input type="submit" value="Login">
+            <p>Don't have an account? <a href="register.php">Register here</a>.</p>
+        </form>
+    </div>
 </body>
 </html>
