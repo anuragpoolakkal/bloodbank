@@ -1,25 +1,25 @@
-*{
+* {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    height: 100vh;
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	height: 100vh;
 	width: 100vw;
 }
 
-.container{
+.container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
 
-h1 {
+main h1 {
 	text-align: center;
 	color: #8b0000;
 	margin-bottom: 30px;
@@ -133,7 +133,7 @@ button:active {
 table {
 	width: 80%;
 	max-width: 800px;
-  margin: 20px auto
+	margin: 20px auto;
 	border-collapse: collapse;
 	margin: 20px 0;
 	background-color: white;
@@ -160,20 +160,20 @@ tr:nth-child(even) {
 	background-color: #f9f9f9;
 }
 
-nav{
+nav {
 	color: white;
 	padding: 20px;
 	text-align: center;
 }
 
-nav a{
+nav a {
 	font-size: 20px;
 	color: grey;
 	text-decoration: none;
 	margin-right: 10px;
 }
 
-.active{
+.active {
 	color: #8b0000;
 	font-weight: bold;
 }

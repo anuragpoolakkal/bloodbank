@@ -1,5 +1,6 @@
 <?php
 session_start();
+$message = "";
 
 $host = 'database-1.clmcs66qmddh.ap-south-1.rds.amazonaws.com';
 $port = 3306;
@@ -18,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     if (empty($email) || empty($password)) {
-        echo "Both fields are required.";
+        $message = "Both fields are required.";
     } else {
         $stmt = $conn->prepare("SELECT id, type FROM users WHERE email = ? AND password = ?");
         $stmt->bind_param("ss", $email, $password);
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </script>";
             exit();
         } else {
-            echo "Invalid email or password.";
+            $message = "Invalid email or password.";
         }
 
         $stmt->close();
@@ -60,6 +61,13 @@ $conn->close();
 <body>
     <div class="container">
         <h1>Blood Bank</h1>
+        
+        <div class="message">
+            <?php if ($message): ?>
+                <p><?php echo $message; ?></p>
+            <?php endif; ?>
+        </div>
+
         <form action="login.php" method="post">
             <h2>Log in</h2>
             <label for="email">Email:</label>
