@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$isLoggedIn = isset($_SESSION['email']); // Check for the correct session variable
+$isLoggedIn = isset($_SESSION['email']);
 $userType = $isLoggedIn ? $_SESSION['user_type'] : null;
 
 if ($isLoggedIn) {

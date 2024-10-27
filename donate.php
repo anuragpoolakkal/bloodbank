@@ -77,7 +77,7 @@ $conn->close();
             document.write('<input type="hidden" name="user_id" value="' + localStorage.getItem('user_id') + '">');
         </script>
         <h2>Donation Details</h2>   
-        <label for="blood_group">Blood Group:</label>
+        <label for="blood_group">Blood Group</label>
         <select id="blood_group" name="blood_group" required>
             <option value="" disabled selected>Select blood group</option>
             <option value="A+">A+</option>
@@ -90,7 +90,7 @@ $conn->close();
             <option value="O-">O-</option>
         </select>
 
-        <label for="donation_date">Donation Date:</label>
+        <label for="donation_date">Donation Date</label>
         <input type="date" id="donation_date" name="donation_date" required>
 
         <script>
@@ -98,8 +98,9 @@ $conn->close();
             document.getElementById('donation_date').value = today;
         </script>
 
-        <label for="quantity_ml">Quantity (in ml):</label>
-        <input type="number" id="quantity_ml" name="quantity_ml" required>
+        <label for="quantity_ml">Quantity (in ml)</label>
+        <input type="number" id="quantity_ml" name="quantity_ml" required placeholder="Enter quantity in ml">
+
 
         <button type="submit">Submit Donation</button>
     </form>
