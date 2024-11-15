@@ -1,4 +1,4 @@
 function logout() {
 	localStorage.clear();
-	window.location.href = "login.php";
+	window.location.href = "/bloodbank/login.php";
 }

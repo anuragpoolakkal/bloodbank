@@ -53,7 +53,7 @@ $conn->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="assets/styles.css">
-    <title>Blood Bank - Home</title>
+    <title>Blood Bank - Donate Blood</title>
     <script src="assets/script.js"></script>
 </head>
 <body>
